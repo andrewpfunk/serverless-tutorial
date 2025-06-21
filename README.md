@@ -37,7 +37,7 @@ Now let's turn that static web page into a dynamic web app using JavaScript
 
 Reference: https://www.taniarascia.com/javascript-mvc-todo-app
 
-- Begin by updating index.html with the following content
+- In the repo you created, select index.html, click the pencil to Edit this file, and replace the original Hello World example with the following content
 ~~~
 <!DOCTYPE html>
 <html lang="en">
@@ -59,14 +59,14 @@ Reference: https://www.taniarascia.com/javascript-mvc-todo-app
 </html>
 ~~~
 - Click Commit changes
-- Click Add file, name it style.css, paste the content from the following link, and click Commit changes
+- Click Add file, name it style.css, copy and paste the content from the following link, and click Commit changes
   - https://github.com/taniarascia/mvc/blob/master/style.css
-- Click Add file, name it script.js, paste the content from the following link, and click Commit changes
+- Click Add file, name it script.js, copy and paste the content from the following link, and click Commit changes
   - https://github.com/taniarascia/mvc/blob/master/script.js
   - Note: feel free to follow along with that tutorial and build up script.js one step at a time
 - View your updated web app at: https://*username*.github.io
-  - Remember that it may take a few seconds for committed changes to be deployed to your live site.
-  - When editing JavaScript, you may need to force reload the page to see the latest changes.
+  - Remember that it may take a few seconds for committed changes to be deployed to your live site
+  - When editing JavaScript, you may need to force reload the page to see the latest changes
 
 ## Part 2 - Netlify
 
