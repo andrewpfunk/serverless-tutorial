@@ -9,7 +9,7 @@ This tutorial will show you how to:
 
 ## Prologue
 
-Create a static web page and host it on GitHub.com
+To get started, let's create a static web page and host it on GitHub.com
 
 Reference: https://pages.github.com/
 
@@ -31,21 +31,45 @@ Reference: https://pages.github.com/
 
 At this point you may choose to experiment with adding and updating pages in your repo on GitHub.com. As you commit changes they should automatically be deployed to your live web site.
 
-
-
-
 ## Part 1
 
-Turn your static web page into a dynamic web app using JavaScript
+Now let's turn your static web page into a dynamic web app using JavaScript
 
-To create the web app we will follow this other tutorial:
-https://www.taniarascia.com/javascript-mvc-todo-app
+Reference: https://www.taniarascia.com/javascript-mvc-todo-app
+
+- Begin by updating index.html with the following content
+~~~
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>Todo App</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+~~~
+- Click Commit changes
+- Click Add file, name it style.css, paste the content from the following link, and click Commit changes
+  - https://github.com/taniarascia/mvc/blob/master/style.css
+- Click Add file, name it script.js, paste the content from the following link, and click Commit changes
+  - https://github.com/taniarascia/mvc/blob/master/script.js
+- Note: feel free to follow along with that tutorial and build up script.js one step at a time     
 
 ### Local development
 
 One of the goals of this tutorial is to show how you can do everything in a web browser. But you will eventually want to do local development on your computer. Here are the basic steps.
 
-
+- If necessary, install git: https://github.com/git-guides/install-git
 
 ## Part 2
 
@@ -55,12 +79,9 @@ deploy site as-is to netlify
 
 set up couchbase and add serverless functions
 
-## Part 4
-
-local iterative development
-
 ## Epilogue
 
-Data access layer and MongoDB
 deploy from github to Vercel
+Data access layer and MongoDB
+
 
