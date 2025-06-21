@@ -31,7 +31,7 @@ Reference: https://pages.github.com/
 
 At this point you may choose to experiment with adding and updating pages in your repo on GitHub.com. As you commit changes they should automatically be deployed to your live web site.
 
-## Part 1
+## Part 1 - GitHub
 
 Now let's turn that static web page into a dynamic web app using JavaScript
 
