@@ -31,9 +31,6 @@ Reference: https://pages.github.com/
 
 At this point you may choose to experiment with adding and updating pages in your repo on GitHub.com. As you commit changes they should automatically be deployed to your live web site.
 
-### Local development
-
-One of the goals of this tutorial is to show how you can do everything in a web browser. But you will eventually want to do local development on your computer. Here are the basic steps.
 
 
 
@@ -44,16 +41,21 @@ Turn your static web page into a dynamic web app using JavaScript
 To create the web app we will follow this other tutorial:
 https://www.taniarascia.com/javascript-mvc-todo-app
 
+### Local development
 
-## Part 1
+One of the goals of this tutorial is to show how you can do everything in a web browser. But you will eventually want to do local development on your computer. Here are the basic steps.
 
-deploy site as-is to netlify
+
 
 ## Part 2
 
-set up couchbase and add serverless functions
+deploy site as-is to netlify
 
 ## Part 3
+
+set up couchbase and add serverless functions
+
+## Part 4
 
 local iterative development
 
