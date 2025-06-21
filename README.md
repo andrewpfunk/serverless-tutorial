@@ -5,7 +5,7 @@ Learn how to develop a full-stack web app using only a web browser, and host it 
 This tutorial will show you how to:
 - Create a client-side web app using HTML and JavaScript, hosted on GitHub.com
 - Add serverless functions and deploy your app to Netlify.com
-- Store your web app data in the cloud with Couchbase.com 
+- Store your web app data in the cloud with Couchbase.com
 
 ## Prologue
 
@@ -32,6 +32,10 @@ Reference: https://pages.github.com/
 At this point you may choose to experiment with adding and updating pages in your repo on GitHub.com. As you commit changes they should automatically be deployed to your live web site.
 
 ### Local development
+
+One of the goals of this tutorial is to show how you can do everything in a web browser. But you will eventually want to do local development on your computer. Here are the basic steps.
+
+
 
 ## Part 1
 
