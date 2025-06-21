@@ -1,5 +1,5 @@
 # serverless-tutorial
-Learn how to develop a web app using only a web browser, and host it in the cloud for free
+Learn how to develop a full-stack web app using only a web browser, and host it in the cloud for free
 
 This tutorial will show you how to:
 - Create a client-side web app using HTML and Javascript, hosted on GitHub.com
