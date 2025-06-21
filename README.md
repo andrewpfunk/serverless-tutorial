@@ -65,7 +65,7 @@ Reference: https://www.taniarascia.com/javascript-mvc-todo-app
   - https://github.com/taniarascia/mvc/blob/master/script.js
   - Note: feel free to follow along with that tutorial and build up script.js one step at a time
 - View your updated web app at: https://*username*.github.io
-  - Remember that it may take a few seconds for committed changes to "go live".
+  - Remember that it may take a few seconds for committed changes to be deployed to your live site.
   - When editing JavaScript, you may need to force reload the page to see the latest changes.
 
 ## Part 2 - Netlify
