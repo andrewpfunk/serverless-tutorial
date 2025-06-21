@@ -68,17 +68,17 @@ Reference: https://www.taniarascia.com/javascript-mvc-todo-app
   - Remember that it may take a few seconds for committed changes to "go live".
   - When editing JavaScript, you may need to force reload the page to see the latest changes.
 
-## Part 2
+## Part 2 - Netlify
 
 deploy site as-is to netlify
 
-## Part 3
+## Part 3 - Couchbase
 
 set up couchbase and add serverless functions
 
 ## Part 4 - Local development
 
-One of the goals of this tutorial is to show how you can do everything in a web browser. But you will eventually want to do local development on your computer. Here are the basic steps.
+This tutorial has shown that it is possible to develop a full-stack web app using only a web browser. Eventually you will want to do local development on your computer. Here are the basic steps.
 
 - If necessary, install git: https://github.com/git-guides/install-git
 
