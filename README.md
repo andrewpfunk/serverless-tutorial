@@ -7,7 +7,7 @@ This tutorial will show you how to:
 - Add serverless functions for database connectivity and deploy your app to Netlify.com
 - Store your web app data in the cloud with Couchbase.com
 
-## Prologue
+## Prologue - Hello World
 
 To get started, let's create a static web page and host it on GitHub.com
 
@@ -84,7 +84,7 @@ This tutorial has shown that it is possible to develop a full-stack web app usin
 
 ## Epilogue
 
-deploy from github to Vercel
-Data access layer and MongoDB
+- deploy from github to Vercel
+- Data access layer and MongoDB
 
 
