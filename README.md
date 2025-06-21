@@ -63,7 +63,10 @@ Reference: https://www.taniarascia.com/javascript-mvc-todo-app
   - https://github.com/taniarascia/mvc/blob/master/style.css
 - Click Add file, name it script.js, paste the content from the following link, and click Commit changes
   - https://github.com/taniarascia/mvc/blob/master/script.js
-- Note: feel free to follow along with that tutorial and build up script.js one step at a time     
+  - Note: feel free to follow along with that tutorial and build up script.js one step at a time
+- View your updated web app at: https://*username*.github.io
+  - Remember that it may take a few seconds for committed changes to "go live".
+  - When editing JavaScript, you may need to force reload the page to see the latest changes.
 
 ### Local development
 
