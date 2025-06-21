@@ -33,7 +33,7 @@ At this point you may choose to experiment with adding and updating pages in you
 
 ## Part 1
 
-Now let's turn your static web page into a dynamic web app using JavaScript
+Now let's turn that static web page into a dynamic web app using JavaScript
 
 Reference: https://www.taniarascia.com/javascript-mvc-todo-app
 
@@ -68,12 +68,6 @@ Reference: https://www.taniarascia.com/javascript-mvc-todo-app
   - Remember that it may take a few seconds for committed changes to "go live".
   - When editing JavaScript, you may need to force reload the page to see the latest changes.
 
-### Local development
-
-One of the goals of this tutorial is to show how you can do everything in a web browser. But you will eventually want to do local development on your computer. Here are the basic steps.
-
-- If necessary, install git: https://github.com/git-guides/install-git
-
 ## Part 2
 
 deploy site as-is to netlify
@@ -81,6 +75,12 @@ deploy site as-is to netlify
 ## Part 3
 
 set up couchbase and add serverless functions
+
+## Part 4 - Local development
+
+One of the goals of this tutorial is to show how you can do everything in a web browser. But you will eventually want to do local development on your computer. Here are the basic steps.
+
+- If necessary, install git: https://github.com/git-guides/install-git
 
 ## Epilogue
 
