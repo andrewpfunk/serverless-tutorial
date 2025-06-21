@@ -1,4 +1,5 @@
 # serverless-tutorial
+
 Learn how to develop a full-stack web app using only a web browser, and host it in the cloud for free
 
 This tutorial will show you how to:
@@ -6,28 +7,50 @@ This tutorial will show you how to:
 - Add serverless functions and deploy your app to Netlify.com
 - Store your web app data in the cloud with Couchbase.com 
 
-# Prologue
-This section will show you how to create a client-side web app and host it on GitHub.com. 
+## Prologue
 
-tutorial on creating a free public site
+Create a client-side web app and host it on GitHub.com
 
+Reference: https://pages.github.com/
 
+- If necessary, create an account on GitHub.com
+- Create a new public repository named *username*.github.io
+- In your new repository, click Add file
+- Name the file index.html and paste the following content
+~~~
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Hello World</h1>
+<p>I'm hosted with GitHub Pages.</p>
+</body>
+</html>
+~~~
+- Click Commit changes
+- Open a new browser tab and go to: https://*username*.github.io
+
+At this point you may choose to experiment with adding and updating pages in your repo on GitHub.com. As you commit changes they should automatically be deployed to your live web site.
+
+### Local development
+
+## Part 1
 
 To create the web app we will follow this other tutorial:
 https://www.taniarascia.com/javascript-mvc-todo-app
 
-# Part 1
+
+## Part 1
 
 deploy site as-is to netlify
 
-# Part 2
+## Part 2
 
 set up couchbase and add serverless functions
 
-# Part 3
+## Part 3
 
 local iterative development
 
-# Epilogue
+## Epilogue
 
 Data access layer and MongoDB
