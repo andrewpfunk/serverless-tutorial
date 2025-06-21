@@ -9,7 +9,7 @@ This tutorial will show you how to:
 
 ## Prologue
 
-Create a client-side web app and host it on GitHub.com
+Create a static web page and host it on GitHub.com
 
 Reference: https://pages.github.com/
 
@@ -38,6 +38,8 @@ One of the goals of this tutorial is to show how you can do everything in a web 
 
 
 ## Part 1
+
+Turn your static web page into a dynamic web app using JavaScript
 
 To create the web app we will follow this other tutorial:
 https://www.taniarascia.com/javascript-mvc-todo-app
