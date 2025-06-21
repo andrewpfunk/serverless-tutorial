@@ -68,7 +68,7 @@ Reference: https://www.taniarascia.com/javascript-mvc-todo-app
   - Remember that it may take a few seconds for committed changes to be deployed to your live site
   - When editing JavaScript, you may need to force reload the page to see the latest changes
  
-This app uses localStorage to persist the app state across sessions within the same browser. To persist data across devices, we need a database.
+This web app uses localStorage to persist the app state across sessions within the same browser. To persist data across devices, we'll need a database.
 
 ## Part 2 - Netlify
 
