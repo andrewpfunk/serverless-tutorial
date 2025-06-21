@@ -7,5 +7,27 @@ This tutorial will show you how to:
 - Store your web app data in the cloud with Couchbase.com 
 
 # Prologue
+This section will show you how to create a client-side web app and host it on GitHub.com. 
+
+tutorial on creating a free public site
+
+
+
+To create the web app we will follow this other tutorial:
+https://www.taniarascia.com/javascript-mvc-todo-app
 
 # Part 1
+
+deploy site as-is to netlify
+
+# Part 2
+
+set up couchbase and add serverless functions
+
+# Part 3
+
+local iterative development
+
+# Epilogue
+
+Data access layer and MongoDB
