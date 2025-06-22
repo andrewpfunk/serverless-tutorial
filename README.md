@@ -116,7 +116,7 @@ set up couchbase and add serverless functions
 
 ## Part Four - Local Development
 
-This tutorial has shown that it is possible to develop a full-stack web app using only a web browser. Eventually you will want to do local development on your computer. Here are the basic steps.
+This tutorial has shown that it is possible to develop and deploy a full-stack web app using only a web browser. Eventually you will want to do local development on your computer. Here are the basic steps.
 
 - If necessary, install git: https://github.com/git-guides/install-git
 
