@@ -2,12 +2,12 @@
 
 Learn how to develop a full-stack web app using only a web browser, and host it in the cloud for free
 
-This tutorial will show you how to:
+This tutorial will show how to:
 - Create a client-side web app using HTML and JavaScript, hosted on GitHub
 - Add serverless functions for database connectivity and deploy your app to Netlify
 - Store your web app data in the cloud with Couchbase
 
-## Part One - GitHub
+## Part One: GitHub
 
 To get started, let's create a static web page and host it on GitHub
 
@@ -15,7 +15,7 @@ Reference: https://pages.github.com/
 
 - If necessary, create an account on GitHub.com
 - Create a new public repository named *username*.github.io
-- In your new repository, click Add file
+- In the new repository, click Add file > Create new file
 - Name the file index.html and paste the following content
 ~~~
 <!DOCTYPE html>
@@ -29,15 +29,15 @@ Reference: https://pages.github.com/
 - Click Commit changes
 - Open a new browser tab and go to: https://*username*.github.io
 
-At this point you may choose to experiment with adding and updating pages in your repo on GitHub.com. As you commit changes they should automatically be deployed to your live web site.
+At this point you may choose to experiment with adding and updating pages in the repo on GitHub.com. As you commit changes they will automatically be deployed to the live web site.
 
 ---
 
-Now let's turn that static web page into a dynamic web app using JavaScript
+Now let's turn that static web page into a dynamic web app using JavaScript.
 
 Reference: https://www.taniarascia.com/javascript-mvc-todo-app
 
-- In the repo you created, select index.html, click the pencil to Edit this file, and replace the original Hello World example with the following content
+- In the same repo, select index.html, click the pencil to Edit this file, and replace the original Hello World example with the following content
 ~~~
 <!DOCTYPE html>
 <html lang="en">
@@ -64,13 +64,13 @@ Reference: https://www.taniarascia.com/javascript-mvc-todo-app
 - Click Add file, name it script.js, copy and paste the content from the following link, and click Commit changes
   - https://github.com/taniarascia/mvc/blob/master/script.js
   - Note: feel free to follow along with that tutorial (referenced above) and build up script.js one step at a time
-- View your updated web app at: https://*username*.github.io
-  - Remember that it may take a few seconds for committed changes to be deployed to your live site
+- View the updated web app at: https://*username*.github.io
+  - Remember that it may take a few seconds for committed changes to be deployed to the live site
   - When editing JavaScript, you may need to force reload the page to see the latest changes
  
 This client-side web app uses localStorage to persist the app state across sessions within the same browser. To persist data across devices, we'll need a database.
 
-## Part Two - Netlify
+## Part Two: Netlify
 
 With traditional [LAMP](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) development, our web app would call PHP functions running on a server to access a MySQL database. In many cases the client-side HTML and JavaScript files would be served from the same host that is also running the PHP and MySQL. With serverless functions, we'll replace the PHP with Node.js (one of many choices) that connects to a Couchbase database (again, one of many choices). Netlify takes care of running the functions, so we don't need to maintain a server.
 
@@ -87,7 +87,7 @@ First we'll deploy our web app from GitHub to Netlify and make sure it still wor
 - Leave all the default settings and click Deploy *username*.github.io
 - Click the link to open https://*random-project-name*.netlify.app
 
-You now have two separate instances of your application running on github.io and netlify.app.
+We now have two separate instances of the application running on github.io and netlify.app.
 
 Before going on, let's see what happens when we make a small change to the app.
 
@@ -100,30 +100,71 @@ Before going on, let's see what happens when we make a small change to the app.
   `this.title.textContent = 'Todo List'`
 
 - Click Commit changes
-- View your updated web app at: https://*username*.github.io
+- View the updated web app at: https://*username*.github.io
   - Remember you might need to force reload to see the change
-- Also view your updated web app at: https://*random-project-name*.netlify.app
+- Also view the updated web app at: https://*random-project-name*.netlify.app
 
 Both GitHub and Netlify automatically redeployed the app based on the new commit.
 
 ---
 
-Next
+Now let's add a serverless function.
 
-## Part Three - Couchbase
+- In the same GitHub repo, click Add file > Create new file
+- Name the file netlify/functions/saveTodos/saveTodos.js
+  - This is the default location where Netlify will look for serverless functions
+  - To create subdirectories in GitHub you can simply type the full path in the name field
+- Paste the following contents
+
+~~~
+// TODO connect to database
+
+const handler = async (event) => {
+  // only allow PUT requests
+  if (event.httpMethod !== 'PUT') {
+    return {
+      statusCode: 405,
+    }
+  }
+
+  try {
+    // TODO save todos to database
+
+    const result = '["Hello from saveTodos function"]';
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify(result),
+    }
+  } catch (error) {
+    return { statusCode: 500, body: error.toString() }
+  }
+}
+
+module.exports = { handler }
+~~~
+
+- Click Commit changes
+
+We'll fill in the parts about connecting to the database in Part Three. For now let's update script.js and make sure the client-side is able to call the serverless function and get the expected result.
+
+- 
+
+## Part Three: Couchbase
 
 set up couchbase and add serverless functions
 
-## Part Four - Local Development
+## Part Four: Local Development
 
 This tutorial has shown that it is possible to develop and deploy a full-stack web app using only a web browser. Eventually you will want to do local development on your computer. Here are the basic steps.
 
 - If necessary, install git: https://github.com/git-guides/install-git
 
-## Part Five - Extra Credit
+## Part Five: Extra Credit
 
 - GitLab, Bitbucket
 - deploy from github to Vercel
 - Data access layer and MongoDB, even MySQL
+- https://docs.netlify.com/domains/configure-domains/bring-a-domain-to-netlify/
 
 
