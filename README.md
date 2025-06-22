@@ -72,7 +72,7 @@ This web app uses localStorage to persist the app state across sessions within t
 
 ## Part 2 - Netlify
 
-With traditional [LAMP](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) development, our client-side web app would call PHP functions running on a server to access a MySQL database. In many cases the HTML and JavaScript files would be served from the same host that is also running the PHP and MySQL. With serverless functions, we'll replace the PHP with Node.js (one of many choices) that connects to Couchbase database (again, one of many choices). Netlify takes care of running the functions, so we don't need to maintain a server.
+With traditional [LAMP](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) development, our client-side web app would call PHP functions running on a server to access a MySQL database. In many cases the HTML and JavaScript files would be served from the same host that is also running the PHP and MySQL. With serverless functions, we'll replace the PHP with Node.js (one of many choices) that connects to a Couchbase database (again, one of many choices). Netlify takes care of running the functions, so we don't need to maintain a server.
 
 Reference: https://developer.couchbase.com/tutorial-quickstart-netlify/
 
