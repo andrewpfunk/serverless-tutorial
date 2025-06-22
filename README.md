@@ -72,15 +72,29 @@ This web app uses localStorage to persist the app state across sessions within t
 
 ## Part 2 - Netlify
 
-With traditional [LAMP](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) development, our client-side web app would call PHP functions running on a server to access a MySQL database. In many cases the HTML and JavaScript files would be served from the same host that is also running the PHP and MySQL. With serverless functions, we'll replace the PHP with Node.js (one of many choices) that connects to a Couchbase database (again, one of many choices). Netlify takes care of running the functions, so we don't need to maintain a server.
+With traditional [LAMP](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) development, our web app would call PHP functions running on a server to access a MySQL database. In many cases the client-side HTML and JavaScript files would be served from the same host that is also running the PHP and MySQL. With serverless functions, we'll replace the PHP with Node.js (one of many choices) that connects to a Couchbase database (again, one of many choices). Netlify takes care of running the functions, so we don't need to maintain a server.
 
 Reference: https://developer.couchbase.com/tutorial-quickstart-netlify/
 
-- deploy site as-is to netlify
+First we'll deploy our web app from GitHub to Netlify and make sure it still works as-is.
+
+- If necessary, create an account on Netlify.com
+  - Choose Sign up with GitHub for easier integration
+- Click Add new project > Import an existing project
+- Click GitHub
+- Select the *username*.github.io repo
+- Leave all the default settings and click Deploy *username*.github.io
+- Click the link to open https://*random-project-name*.netlify.app
+
+You now have two totally separate instances of your application running on github.io and netlify.app.
+
+Next
 
 ## Part 3 - Couchbase
 
 set up couchbase and add serverless functions
+
+Reference: https://developer.couchbase.com/tutorial-quickstart-netlify/
 
 ## Part 4 - Local development
 
@@ -90,7 +104,8 @@ This tutorial has shown that it is possible to develop a full-stack web app usin
 
 ## Epilogue
 
+- GitLab, Bitbucket
 - deploy from github to Vercel
-- Data access layer and MongoDB
+- Data access layer and MongoDB, even MySQL
 
 
