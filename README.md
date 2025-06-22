@@ -7,7 +7,7 @@ This tutorial will show you how to:
 - Add serverless functions for database connectivity and deploy your app to Netlify.com
 - Store your web app data in the cloud with Couchbase.com
 
-## Prologue - Hello World
+## Part One - GitHub
 
 To get started, let's create a static web page and host it on GitHub.com
 
@@ -30,8 +30,6 @@ Reference: https://pages.github.com/
 - Open a new browser tab and go to: https://*username*.github.io
 
 At this point you may choose to experiment with adding and updating pages in your repo on GitHub.com. As you commit changes they should automatically be deployed to your live web site.
-
-## Part 1 - GitHub
 
 Now let's turn that static web page into a dynamic web app using JavaScript
 
@@ -70,7 +68,7 @@ Reference: https://www.taniarascia.com/javascript-mvc-todo-app
  
 This web app uses localStorage to persist the app state across sessions within the same browser. To persist data across devices, we'll need a database.
 
-## Part 2 - Netlify
+## Part Two - Netlify
 
 With traditional [LAMP](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) development, our web app would call PHP functions running on a server to access a MySQL database. In many cases the client-side HTML and JavaScript files would be served from the same host that is also running the PHP and MySQL. With serverless functions, we'll replace the PHP with Node.js (one of many choices) that connects to a Couchbase database (again, one of many choices). Netlify takes care of running the functions, so we don't need to maintain a server.
 
@@ -108,19 +106,19 @@ Both GitHub and Netlify automatically redeployed the app based on the new commit
 
 Next
 
-## Part 3 - Couchbase
+## Part Three - Couchbase
 
 set up couchbase and add serverless functions
 
 Reference: https://developer.couchbase.com/tutorial-quickstart-netlify/
 
-## Part 4 - Local development
+## Part Four - Local Development
 
 This tutorial has shown that it is possible to develop a full-stack web app using only a web browser. Eventually you will want to do local development on your computer. Here are the basic steps.
 
 - If necessary, install git: https://github.com/git-guides/install-git
 
-## Epilogue
+## Part Five - Extra Credit
 
 - GitLab, Bitbucket
 - deploy from github to Vercel
