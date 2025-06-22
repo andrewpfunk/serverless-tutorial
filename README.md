@@ -31,6 +31,8 @@ Reference: https://pages.github.com/
 
 At this point you may choose to experiment with adding and updating pages in your repo on GitHub.com. As you commit changes they should automatically be deployed to your live web site.
 
+---
+
 Now let's turn that static web page into a dynamic web app using JavaScript
 
 Reference: https://www.taniarascia.com/javascript-mvc-todo-app
@@ -61,12 +63,12 @@ Reference: https://www.taniarascia.com/javascript-mvc-todo-app
   - https://github.com/taniarascia/mvc/blob/master/style.css
 - Click Add file, name it script.js, copy and paste the content from the following link, and click Commit changes
   - https://github.com/taniarascia/mvc/blob/master/script.js
-  - Note: feel free to follow along with that tutorial and build up script.js one step at a time
+  - Note: feel free to follow along with that tutorial (referenced above) and build up script.js one step at a time
 - View your updated web app at: https://*username*.github.io
   - Remember that it may take a few seconds for committed changes to be deployed to your live site
   - When editing JavaScript, you may need to force reload the page to see the latest changes
  
-This web app uses localStorage to persist the app state across sessions within the same browser. To persist data across devices, we'll need a database.
+This client-side web app uses localStorage to persist the app state across sessions within the same browser. To persist data across devices, we'll need a database.
 
 ## Part Two - Netlify
 
@@ -104,13 +106,13 @@ Before going on, let's see what happens when we make a small change to the app.
 
 Both GitHub and Netlify automatically redeployed the app based on the new commit.
 
+---
+
 Next
 
 ## Part Three - Couchbase
 
 set up couchbase and add serverless functions
-
-Reference: https://developer.couchbase.com/tutorial-quickstart-netlify/
 
 ## Part Four - Local Development
 
