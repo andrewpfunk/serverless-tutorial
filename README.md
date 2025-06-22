@@ -80,13 +80,31 @@ First we'll deploy our web app from GitHub to Netlify and make sure it still wor
 
 - If necessary, create an account on Netlify.com
   - Choose Sign up with GitHub for easier integration
+  - Select the Free tier
 - Click Add new project > Import an existing project
 - Click GitHub
 - Select the *username*.github.io repo
 - Leave all the default settings and click Deploy *username*.github.io
 - Click the link to open https://*random-project-name*.netlify.app
 
-You now have two totally separate instances of your application running on github.io and netlify.app.
+You now have two separate instances of your application running on github.io and netlify.app.
+
+Before going on, let's see what happens when we make a small change to the app.
+
+- In GitHub, edit script.js and change the following line from:
+  
+    `this.title.textContent = 'Todos'`
+  
+- To:
+
+  `this.title.textContent = 'Todo List'`
+
+- Click Commit changes
+- View your updated web app at: https://*username*.github.io
+  - Remember you might need to force reload to see the change
+- Also view your updated web app at: https://*random-project-name*.netlify.app
+
+Both GitHub and Netlify automatically redeployed the app based on the new commit.
 
 Next
 
