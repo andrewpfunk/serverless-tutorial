@@ -66,7 +66,7 @@ Reference: https://www.taniarascia.com/javascript-mvc-todo-app
   - https://github.com/taniarascia/mvc/blob/master/script.js
   - Note: feel free to follow along with that tutorial (referenced above) and build up script.js one step at a time
 - View the updated web app at: https://*username*.github.io
-  - Remember that it may take a few seconds for committed changes to be deployed to the live site
+  - Keep in mind that it may take a few seconds for committed changes to be deployed to the live site
   - When editing JavaScript, you may need to force reload the page to see the latest changes
  
 This client-side web app uses localStorage to persist the app state across sessions within the same browser. To persist data across devices, we'll need a database.
