@@ -13,7 +13,7 @@ To get started, let's create a static web page and host it on GitHub
 
 Reference: https://pages.github.com/
 
-- If necessary, create an account on GitHub.com
+- Create or sign in to your account on [github.com](https://github.com/)
 - Create a new public repository named *username*.github.io
 - In the new repository, click Add file > Create new file
 - Name the file index.html and paste the following content
@@ -30,7 +30,7 @@ Reference: https://pages.github.com/
   - Note: you may prefer to view and edit files in your repository using [github.dev](https://docs.github.com/en/codespaces/the-githubdev-web-based-editor)
 - Open a new browser tab and go to: https://*username*.github.io
 
-At this point you may choose to experiment with adding and updating pages in the repo on GitHub.com. As you commit changes they will automatically be deployed to the live web site.
+At this point you may choose to experiment with adding and updating pages in the repo. As you commit changes they will automatically be deployed to the live web site.
 
 ---
 
