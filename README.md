@@ -94,11 +94,15 @@ Before going on, let's see what happens when we make a small change to the app.
 
 - In GitHub, edit script.js and change the following line from:
   
-    `this.title.textContent = 'Todos'`
+~~~
+this.title.textContent = 'Todos'
+~~~
   
 - To:
 
-  `this.title.textContent = 'Todo List'`
+~~~
+this.title.textContent = 'Todo List'
+~~~
 
 - Click Commit changes
 - View the updated web app at: https://*username*.github.io
@@ -170,11 +174,14 @@ setTodos();
 ~~~
 
 - Click Commit changes
-
-This is the minimal amount of code needed to call our serverless function and place the result in localStorage before initializing the app. In a real application it would be better to make more substantial changes to account for the database integration.
+  - Note: this is the minimal amount of code needed to call our serverless function and place the result in localStorage before initializing the app. In a real application it would be better to redesign the app to account for the database integration.
 
 - View the updated web app at: https://*random-project-name*.netlify.app
   - Note: the web app will no longer work on GitHub because it now uses a serverless function provided by Netlify. If you open the app at https://*username*.github.io and look in the JavaScript console you will see an error like "/.netlify/functions/loadTodos:1  Failed to load resource: the server responded with a status of 404 ()"
+- Go ahead and check the box next to Create a serverless function. You can also try adding and deleting todos.
+- Reload the page
+
+Notice that it forgot your changes. That's because we're not yet saving them to a database (and not really loading them either). For that we'll need to create a second serverless function. But first, let's set up the database.
 
 ## Part Three: Couchbase
 
