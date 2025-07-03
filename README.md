@@ -185,7 +185,25 @@ Notice that it forgot your changes. That's because we're not yet saving them to 
 
 ## Part Three: Couchbase
 
-set up couchbase and add serverless functions
+Reference: https://www.couchbase.com/blog/get-started-couchbase-capella
+
+- Create or sign in to your account on [couchbase.com](https://www.couchbase.com/)
+  - Choose Sign up with GitHub for easier integration
+  - Choose the Free tier
+- Click Create Project and name it whatever you want
+- Click on the project and then click Create Cluster
+  - Note: you get one cluster at a time on the Free tier
+- Follow the prompts to Import Travel Sample data
+  - Note: our app won't use this data but you can follow the tutorial referenced above to become familiar with using the cluster
+- Navigate to the Settings tab on the database page
+- Click on Allowed IP Addresses
+- Click on Add Allowed IP
+- Click on Allow Access from Anywhere
+  - This should add an entry for 0.0.0.0/0
+
+TODO locate connection string, create user
+
+
 
 ## Part Four: Local Development
 
