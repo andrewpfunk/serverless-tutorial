@@ -28,7 +28,7 @@ Reference: https://pages.github.com/
 ~~~
 - Click Commit changes
   - Note: you may prefer to view and edit files in your repository using [github.dev](https://docs.github.com/en/codespaces/the-githubdev-web-based-editor)
-- Open a new browser tab and go to: https://*username*.github.io
+- To see your published web page, open a new browser tab and go to: https://*username*.github.io
 
 At this point you may choose to experiment with adding and updating pages in the repo. As you commit changes they will automatically be deployed to the live web site.
 
@@ -69,11 +69,11 @@ Reference: https://www.taniarascia.com/javascript-mvc-todo-app
   - Keep in mind that it may take a few seconds for committed changes to be deployed to the live site
   - When editing JavaScript, you may need to force reload the page to see the latest changes
  
-This client-side web app uses localStorage to persist the app state across sessions within the same browser. To persist data across devices, we'll need a database.
+This client-side web app uses localStorage to persist the app data across sessions within the same browser. To persist data across devices, we'll need to connect to a database.
 
 ## Part Two: Netlify
 
-With traditional [LAMP](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) development, our web app would call PHP functions running on a server to access a MySQL database. In many cases the client-side HTML and JavaScript files would be served from the same host that is also running the PHP and MySQL. With serverless functions, we'll replace the PHP with Node.js (one of many choices) that connects to a Couchbase database (again, one of many choices). Netlify takes care of running the functions, so we don't need to maintain a server.
+With traditional [LAMP](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) development, our web app would call PHP functions running on a server to access a MySQL database. In many cases the client-side HTML and JavaScript files would be served from the same host that is also running the PHP and MySQL. With serverless functions, we'll replace the PHP with [Node.js](https://nodejs.org/) (one of many choices) that connects to a Couchbase database (again, one of many choices). Netlify takes care of running the functions, so we don't need to maintain a server.
 
 Reference: https://developer.couchbase.com/tutorial-quickstart-netlify/
 
@@ -112,7 +112,7 @@ Both GitHub and Netlify automatically redeployed the app based on the new commit
 Now let's add a serverless function.
 
 - In the same GitHub repo, click Add file > Create new file
-- Name the file netlify/functions/saveTodos/saveTodos.js
+- Name the file netlify/functions/loadTodos/loadTodos.js
   - This is the default location where Netlify will look for serverless functions
   - To create subdirectories in GitHub you can simply type the full path in the name field
 - Paste the following contents
@@ -121,21 +121,22 @@ Now let's add a serverless function.
 // TODO connect to database
 
 const handler = async (event) => {
-  // only allow PUT requests
-  if (event.httpMethod !== 'PUT') {
+  // only allow GET requests
+  if (event.httpMethod !== 'GET') {
     return {
       statusCode: 405,
     }
   }
 
   try {
-    // TODO save todos to database
 
-    const result = '["Hello from saveTodos function"]';
+    // TODO query database
+
+    const results = [{id: 1, text: "Create a serverless function", complete: false}];
 
     return {
       statusCode: 200,
-      body: JSON.stringify(result),
+      body: JSON.stringify(results),
     }
   } catch (error) {
     return { statusCode: 500, body: error.toString() }
@@ -149,7 +150,31 @@ module.exports = { handler }
 
 The tutorial referenced above explains why the serverless function is structured this way. We'll fill in the parts about connecting to the database in Part Three. For now let's update script.js and make sure the client-side script is able to call the serverless function and get the expected result.
 
-- 
+At the bottom of script.js is the following line, which initializes the web app:
+
+~~~
+const app = new Controller(new Model(), new View());
+~~~
+
+- Edit script.js and wrap that line with the following additional lines:
+
+~~~
+async function setTodos() {
+  const response = await fetch('/.netlify/functions/loadTodos');
+  const json = await response.json();
+  localStorage.setItem('todos', JSON.stringify(json));
+
+  const app = new Controller(new Model(), new View());
+}
+setTodos();
+~~~
+
+- Click Commit changes
+
+This is the minimal amount of code needed to call our serverless function and place the result in localStorage before initializing the app. In a real application it would be better to make more substantial changes to account for the database integration.
+
+- View the updated web app at: https://*random-project-name*.netlify.app
+  - Note: the web app will no longer work on GitHub because it now uses a serverless function provided by Netlify. If you open the app at https://*username*.github.io and look in the JavaScript console you will see an error like "/.netlify/functions/loadTodos:1  Failed to load resource: the server responded with a status of 404 ()"
 
 ## Part Three: Couchbase
 
