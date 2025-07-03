@@ -79,7 +79,7 @@ Reference: https://developer.couchbase.com/tutorial-quickstart-netlify/
 
 First we'll deploy our web app from GitHub to Netlify and make sure it still works as-is.
 
-- If necessary, create an account on Netlify.com
+- Create or sign in to your account on [netlify.com](https://www.netlify.com/)
   - Choose Sign up with GitHub for easier integration
   - Select the Free tier
 - Click Add new project > Import an existing project
