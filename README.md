@@ -237,6 +237,7 @@ COUCHBASE_PASSWORD=TODOS_PASSWORD
 ~~~
 
 - Click Import variables
+  - This is recommended over including access credentials directly in your code 
 
 Now we are ready to create our second serverless function.
 
