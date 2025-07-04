@@ -189,19 +189,54 @@ Reference: https://www.couchbase.com/blog/get-started-couchbase-capella
 
 - Create or sign in to your account on [couchbase.com](https://www.couchbase.com/)
   - Choose Sign up with GitHub for easier integration
-  - Choose the Free tier
-- Click Create Project and name it whatever you want
-- Click on the project and then click Create Cluster
-  - Note: you get one cluster at a time on the Free tier
-- Follow the prompts to Import Travel Sample data
-  - Note: our app won't use this data but you can follow the tutorial referenced above to become familiar with using the cluster
-- Navigate to the Settings tab on the database page
-- Click on Allowed IP Addresses
-- Click on Add Allowed IP
-- Click on Allow Access from Anywhere
-  - This should add an entry for 0.0.0.0/0
 
-TODO locate connection string, create user
+When you first create an account you will be guided through a quick start to set up a cluster. Your experience may vary but you can always make changes later in cluster settings. Here are the important steps:
+  
+- Click on Create Cluster
+  - Choose the Free tier
+    - Note: you can have one cluster at a time on the free tier
+  - Accept random cluster name or change it
+  - Choose any provider (AWS/Azure/Google Cloud)
+  - Scroll to the bottom of the page and click Create Cluster
+  - Wait a few minutes for the cluster to be started (it will say Healthy)
+- Click on the name of your cluster
+- Click Connect
+- Copy the Public Connection String, e.g. couchbases://cb.*random*.cloud.couchbase.com
+- Click on Allowed IP Addresses
+  - Click Add Allowed IP
+  - Click Allow Access from Anywhere and click Add Allowed IP
+    - This should have added an entry for 0.0.0.0/0
+- Click Cluster Access and then click Create Cluster Access
+  - Enter a Cluster Access Name
+    - This is a database username, not your account username, e.g. todos_user
+  - Enter a password (and copy it for later use)
+- Under Bucket-Level Access, select All Buckets, All Scopes, Read/Write
+- Navigate to the Data Tools tab and click Create
+  - Select New Bucket and set the Name, Scope, and Collection to todos
+
+That was a lot of clicking but the important settings to keep track of are:
+- Public Connection String
+- Allowed IP = 0.0.0.0/0
+- Cluster Access Name
+- Cluster Access Password
+- Bucket, Scope, Collection name (all todos)
+
+These settings will tell our serverless function how to connect to the database. Let's set that up now.
+
+- In Netlify, click on the name of your project
+- Click on Project configuration
+- Click on Environment variables
+- Scroll down and click Add a variable > Import from a .env file
+- In Contents of .env file, type your access credentials (it will look similar to the following)
+
+~~~
+COUCHBASE_ENDPOINT=cb.RANDOM_STRING.cloud.couchbase.com
+COUCHBASE_BUCKET=todos
+COUCHBASE_USERNAME=todos_user
+COUCHBASE_PASSWORD=TODOS_PASSWORD
+~~~
+
+- Click Import variables
 
 
 
