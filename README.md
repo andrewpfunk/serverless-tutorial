@@ -309,9 +309,72 @@ const result = await collection.upsert('todos', event.body)
 
 Next, we need to modify script.js to call the new serverless function.
 
-- Edit script.js ...
+- Edit script.js and add these lines at the bottom, right below the setTodos() function we added earlier:
 
-Now debug the build failure ...
+~~~
+const localStorageSetHandler = async function(e) {  
+  const result = await fetch('/.netlify/functions/saveTodos', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(localStorage.getItem('todos')),
+    });
+    console.log(result);
+};
+document.addEventListener("localStorageSet", localStorageSetHandler, false);
+~~~
+
+We need to make one more change to script.js to call this event handler when the todos are updated.
+
+- Edit script.js and near the top, insert the following line into the _commit(todos) function so it looks like this:
+
+~~~
+_commit(todos) {
+  this.onTodoListChanged(todos)
+  localStorage.setItem('todos', JSON.stringify(todos))
+    
+  document.dispatchEvent(new Event('localStorageSet'));
+}
+~~~
+
+- Click Commit changes
+- View the updated web app at: https://*random-project-name*.netlify.app
+
+That last commit should have kicked off a new build, but the behavior hasn't changed. That's because we intentionally skipped a step which led to a build failure. This is a good opportunity to learn what to do when that happens.
+
+- In Netlify, click on *random-project-name*
+- Scroll down and click on the most recent Production deploy, which Failed
+- Click on Why did it fail?
+
+The AI gave me the correct analysis:
+
+**Diagnosis**
+
+The build failed due to a dependency installation error related to a Netlify Function. The error message indicates that the function saveTodos requires the 'couchbase' module, but it cannot be found.
+
+**Solution**
+
+1. Verify that the 'couchbase' module is included in the site's top-level package.json file.
+2. If the 'couchbase' module is missing, add it to the dependencies in the package.json file using npm:
+
+~~~
+npm install couchbase
+~~~
+
+3. After adding the 'couchbase' module, commit the changes to the repository and trigger a new build to ensure the function can find the required dependency.
+
+We'll learn how to run `npm install` in Part Four. For now let's just create that package.json file in GitHub.
+
+- In the GitHub repo, add a file named package.json and paste the following content:
+
+~~~
+{
+  "dependencies": {
+    "couchbase": "^4.4.6"
+  }
+}
+~~~
 
 
 
