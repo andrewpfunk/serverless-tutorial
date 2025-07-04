@@ -205,8 +205,7 @@ Reference: https://www.couchbase.com/blog/get-started-couchbase-capella
 When you first create an account you will be guided through a quick start to set up a cluster. Your experience may vary but you can always make changes later in cluster settings. Here are the important steps:
   
 - Click on Create Cluster
-  - Choose the Free tier
-    - Note: you can have one cluster at a time on the free tier
+  - Choose the Free tier (you can have one cluster at a time on the free tier)
   - Accept random cluster name or change it
   - Choose any provider (AWS/Azure/Google Cloud)
   - Scroll to the bottom of the page and click Create Cluster
@@ -226,7 +225,7 @@ When you first create an account you will be guided through a quick start to set
 - Navigate to the Data Tools tab and click Create
   - Select New Bucket and set the Name, Scope, and Collection to todos
 
-That was a lot of clicking but the important settings to keep track of are:
+In case you were not able to follow those steps exactly, here are the important settings to check:
 - Public Connection String
 - Allowed IP = 0.0.0.0/0
 - Cluster Access Name
@@ -249,7 +248,8 @@ COUCHBASE_PASSWORD=TODOS_PASSWORD
 ~~~
 
 - Click Import variables
-  - This is recommended over including access credentials directly in your code 
+
+Using environment variables is recommended over including access credentials directly in your code.
 
 Now we are ready to create our second serverless function.
 
