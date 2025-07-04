@@ -92,13 +92,13 @@ We now have two separate instances of the application running on github.io and n
 
 Before going on, let's see what happens when we make a small change to the app.
 
-- In GitHub, edit script.js and change the following line from:
+- In GitHub, edit script.js and change the following line from this:
   
 ~~~
 this.title.textContent = 'Todos'
 ~~~
   
-- To:
+- To this:
 
 ~~~
 this.title.textContent = 'Todo List'
@@ -160,7 +160,7 @@ At the bottom of script.js is the following line, which initializes the web app:
 const app = new Controller(new Model(), new View());
 ~~~
 
-- Edit script.js and wrap that line with the following additional lines:
+- Edit script.js and replace that line with the following lines:
 
 ~~~
 async function setTodos() {
@@ -174,7 +174,7 @@ setTodos();
 ~~~
 
 - Click Commit changes
-  - Note: this is the minimal amount of code needed to call our serverless function and place the result in localStorage before initializing the app. In a real application it would be better to redesign the app to account for the database integration.
+  - Note: this is the minimal amount of code needed to call our serverless function and place the result in localStorage before initializing the app. In a real application it might be better to create a new class that connects to the database with error handling and manages data synchronization.
 
 - View the updated web app at: https://*random-project-name*.netlify.app
   - Note: the web app will no longer work on GitHub because it now uses a serverless function provided by Netlify. If you open the app at https://*username*.github.io and look in the JavaScript console you will see an error like "/.netlify/functions/loadTodos:1  Failed to load resource: the server responded with a status of 404 ()"
