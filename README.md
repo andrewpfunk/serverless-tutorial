@@ -27,7 +27,9 @@ Reference: https://pages.github.com/
 </html>
 ~~~
 - Click Commit changes
-  - Note: you may prefer to view and edit files in your repository using [github.dev](https://docs.github.com/en/codespaces/the-githubdev-web-based-editor)
+
+Note: you may prefer to view and edit files in your repository using [github.dev](https://docs.github.com/en/codespaces/the-githubdev-web-based-editor)
+
 - To see your published web page, open a new browser tab and go to: https://*username*.github.io
 
 At this point you may choose to experiment with adding and updating pages in the repo. As you commit changes they will automatically be deployed to the live web site.
@@ -38,7 +40,7 @@ Now let's turn that static web page into a dynamic web app using JavaScript.
 
 Reference: https://www.taniarascia.com/javascript-mvc-todo-app
 
-- In the same repo, select index.html, click the pencil to Edit this file, and replace the original Hello World example with the following content
+- In the same repo, select index.html, click the pencil to Edit this file, and replace the original Hello World example with the following content:
 ~~~
 <!DOCTYPE html>
 <html lang="en">
@@ -60,20 +62,25 @@ Reference: https://www.taniarascia.com/javascript-mvc-todo-app
 </html>
 ~~~
 - Click Commit changes
-- Click Add file, name it style.css, copy and paste the content from the following link, and click Commit changes
-  - https://github.com/taniarascia/mvc/blob/master/style.css
-- Click Add file, name it script.js, copy and paste the content from the following link, and click Commit changes
-  - https://github.com/taniarascia/mvc/blob/master/script.js
-  - Note: feel free to follow along with that tutorial (referenced above) and build up script.js one step at a time
+- Click Add file, name it style.css, and copy and paste the content from the following link: https://github.com/taniarascia/mvc/blob/master/style.css
+- Click Commit changes  
+- Click Add file, name it script.js, and copy and paste the content from the following link: https://github.com/taniarascia/mvc/blob/master/script.js
+- Click Commit changes  
+
+Note: feel free to follow along with that MVC tutorial (referenced above) and build up script.js one step at a time
+
 - View the updated web app at: https://*username*.github.io
-  - Keep in mind that it may take a few seconds for committed changes to be deployed to the live site
-  - When editing JavaScript, you may need to force reload the page to see the latest changes
+
+Keep in mind that it may take a few seconds for committed changes to be deployed to the live site. Also, when updating JavaScript, you may need to force reload the page to see the latest changes.
+
+- Try adding, deleting, and marking Todos complete
+- Reload the page
  
-This client-side web app uses localStorage to persist the app data across sessions within the same browser. To persist data across devices, we'll need to connect to a database.
+This client-side web app uses localStorage to remember the changes you've made when you reload the page within the same browser. But to have those changes show up in a different browser and/or on a different device, we'll need to connect to a database.
 
 ## Part Two: Netlify
 
-With traditional [LAMP](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) development, our web app would call PHP functions running on a server to access a MySQL database. In many cases the client-side HTML and JavaScript files would be served from the same host that is also running the PHP and MySQL. With serverless functions, we'll replace the PHP with [Node.js](https://nodejs.org/) (one of many choices) that connects to a Couchbase database (again, one of many choices). Netlify takes care of running the functions, so we don't need to maintain a server.
+With traditional [LAMP](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) development, our web app would call PHP functions running on a server to access a MySQL database. In many cases the client-side HTML and JavaScript files would be served from the same host that is also running the PHP and MySQL. With serverless functions, we'll replace the PHP with Node.js (one of many choices) that connects to a Couchbase database (again, one of many choices). Netlify takes care of running the functions, so we don't need to maintain a server.
 
 Reference: https://developer.couchbase.com/tutorial-quickstart-netlify/
 
@@ -106,7 +113,9 @@ this.title.textContent = 'Todo List'
 
 - Click Commit changes
 - View the updated web app at: https://*username*.github.io
-  - Remember you might need to force reload to see the change
+
+Remember you might need to force reload to see the change.
+
 - Also view the updated web app at: https://*random-project-name*.netlify.app
 
 Both GitHub and Netlify automatically redeployed the app based on the new commit.
@@ -117,8 +126,9 @@ Now let's add a serverless function.
 
 - In the same GitHub repo, click Add file > Create new file
 - Name the file netlify/functions/loadTodos/loadTodos.js
-  - This is the default location where Netlify will look for serverless functions
-  - To create subdirectories in GitHub you can simply type the full path in the name field
+
+This is the default location where Netlify will look for serverless functions. To create subdirectories in GitHub you can simply type the full path in the name field.
+
 - Paste the following contents
 
 ~~~
@@ -174,14 +184,16 @@ setTodos();
 ~~~
 
 - Click Commit changes
-  - Note: this is the minimal amount of code needed to call our serverless function and place the result in localStorage before initializing the app. In a real application it might be better to create a new class that connects to the database with error handling and manages data synchronization.
+
+ Note: this is the minimal amount of code needed to call our serverless function and place the result in localStorage before initializing the app. In a real application it might be better to create a new class that connects to the database with error handling and manages data synchronization.
 
 - View the updated web app at: https://*random-project-name*.netlify.app
-  - Note: the web app will no longer work on GitHub because it now uses a serverless function provided by Netlify. If you open the app at https://*username*.github.io and look in the JavaScript console you will see an error like "/.netlify/functions/loadTodos:1  Failed to load resource: the server responded with a status of 404 ()"
+
+Note: the web app will no longer work on GitHub because it now uses a serverless function provided by Netlify. If you open the app at https://*username*.github.io and look in the JavaScript console you will see an error like "/.netlify/functions/loadTodos:1  Failed to load resource: the server responded with a status of 404 ()"
 - Go ahead and check the box next to Create a serverless function. You can also try adding and deleting todos.
 - Reload the page
 
-Notice that it forgot your changes. That's because we're not yet saving them to a database (and not really loading them either). For that we'll need to create a second serverless function. But first, let's set up the database.
+Notice that it forgot your changes. That's because we're not yet saving them to a database (and not really loading them either, but overwriting localStorage on load). For that we'll need to create a second serverless function. But first, let's set up the database.
 
 ## Part Three: Couchbase
 
