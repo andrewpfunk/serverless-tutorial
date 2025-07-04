@@ -210,7 +210,7 @@ When you first create an account you will be guided through a quick start to set
   - Enter a Cluster Access Name
     - This is a database username, not your account username, e.g. todos_user
   - Enter a password (and copy it for later use)
-- Under Bucket-Level Access, select All Buckets, All Scopes, Read/Write
+  - Under Bucket-Level Access, select All Buckets, All Scopes, Read/Write
 - Navigate to the Data Tools tab and click Create
   - Select New Bucket and set the Name, Scope, and Collection to todos
 
@@ -237,6 +237,69 @@ COUCHBASE_PASSWORD=TODOS_PASSWORD
 ~~~
 
 - Click Import variables
+
+Now we are ready to create our second serverless function.
+
+- In GitHub, click Add File, name it netlify/functions/saveTodos/saveTodos.js, and paste in the following content:
+
+~~~
+const couchbase = require('couchbase')
+
+const ENDPOINT = process.env.COUCHBASE_ENDPOINT
+const USERNAME = process.env.COUCHBASE_USERNAME
+const PASSWORD = process.env.COUCHBASE_PASSWORD
+const BUCKET = process.env.COUCHBASE_BUCKET
+
+const couchbaseClientPromise = couchbase.connect('couchbases://' + ENDPOINT, {
+  username: USERNAME,
+  password: PASSWORD,
+  timeouts: {
+    kvTimeout: 10000, // milliseconds
+  },
+})
+
+const handler = async (event) => {
+  // only allow PUT requests
+  if (event.httpMethod !== 'PUT') {
+    return {
+      statusCode: 405,
+    }
+  }
+
+  try {
+    const cluster = await couchbaseClientPromise
+    const bucket = cluster.bucket(BUCKET)
+    const scope = bucket.scope(BUCKET)
+    const collection = scope.collection(BUCKET)
+
+    // TODO this should be coming from script.js
+    
+    const modifiedAirline = {
+      callsign: 'MILE-AIR',
+      country: JSON.parse(event.body).country,
+      iata: 'Q5',
+      icao: 'MLA',
+      id: 10,
+      name: '40-Mile-Air',
+      type: 'airline',
+    }
+    const idToUpsert = modifiedAirline.type + '_' + modifiedAirline.id
+
+    const result = await collection.upsert(idToUpsert, modifiedAirline)
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify(result),
+    }
+  } catch (error) {
+    return { statusCode: 500, body: error.toString() }
+  }
+}
+
+module.exports = { handler }
+~~~
+
+Get that part working and then continue tutorial...
 
 
 
