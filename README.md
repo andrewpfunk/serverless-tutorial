@@ -238,7 +238,7 @@ These settings will tell our serverless function how to connect to the database.
 - Click on Project configuration
 - Click on Environment variables
 - Scroll down and click Add a variable > Import from a .env file
-- In Contents of .env file, type your access credentials (it will look similar to the following)
+- In Contents of .env file, enter your access credentials (it will look similar to the following)
 
 ~~~
 COUCHBASE_ENDPOINT=cb.RANDOM_STRING.cloud.couchbase.com
@@ -285,20 +285,7 @@ const handler = async (event) => {
     const scope = bucket.scope(BUCKET)
     const collection = scope.collection(BUCKET)
 
-    // TODO this should be coming from script.js
-    
-    const modifiedAirline = {
-      callsign: 'MILE-AIR',
-      country: JSON.parse(event.body).country,
-      iata: 'Q5',
-      icao: 'MLA',
-      id: 10,
-      name: '40-Mile-Air',
-      type: 'airline',
-    }
-    const idToUpsert = modifiedAirline.type + '_' + modifiedAirline.id
-
-    const result = await collection.upsert(idToUpsert, modifiedAirline)
+    const result = await collection.upsert('todos', event.body)
 
     return {
       statusCode: 200,
@@ -312,7 +299,19 @@ const handler = async (event) => {
 module.exports = { handler }
 ~~~
 
-Get that part working and then continue tutorial...
+- Click Commit changes
+  
+At the top of this serverless function, the database credentials are loaded from the environment variables. A connection to the database is then established. When this serverless function is called, it will update the database with the body of the message. The key part of the function is this line:
+
+~~~
+const result = await collection.upsert('todos', event.body)
+~~~
+
+Next, we need to modify script.js to call the new serverless function.
+
+- Edit script.js ...
+
+Now debug the build failure ...
 
 
 
