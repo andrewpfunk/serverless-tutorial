@@ -213,7 +213,7 @@ When you first create an account you will be guided through a quick start to set
   - Wait a few minutes for the cluster to be started (it will say Healthy)
 - Click on the name of your cluster
 - Click Connect
-- Copy the Public Connection String, e.g. couchbases://cb.*random*.cloud.couchbase.com
+- Copy the Public Connection String, e.g. couchbases://cb.*random_string*.cloud.couchbase.com
 - Click on Allowed IP Addresses
   - Click Add Allowed IP
   - Click Allow Access from Anywhere and click Add Allowed IP
@@ -252,7 +252,65 @@ COUCHBASE_PASSWORD=TODOS_PASSWORD
 
 Using environment variables is recommended over including access credentials directly in your code.
 
-Now we are ready to create our second serverless function.
+Now we are ready to have our serverless function connect to the database.
+
+- Edit netlify/functions/loadTodos/loadTodos.js so that it looks like the following:
+
+~~~
+const couchbase = require('couchbase')
+
+const ENDPOINT = process.env.COUCHBASE_ENDPOINT
+const USERNAME = process.env.COUCHBASE_USERNAME
+const PASSWORD = process.env.COUCHBASE_PASSWORD
+const BUCKET = process.env.COUCHBASE_BUCKET
+
+const couchbaseClientPromise = couchbase.connect('couchbases://' + ENDPOINT, {
+  username: USERNAME,
+  password: PASSWORD,
+  timeouts: {
+    kvTimeout: 10000, // milliseconds
+  },
+})
+
+const handler = async (event) => {
+  // only allow GET requests
+  if (event.httpMethod !== 'GET') {
+    return {
+      statusCode: 405,
+    }
+  }
+
+  try {
+
+    const cluster = await couchbaseClientPromise
+    const bucket = cluster.bucket(BUCKET)
+    const scope = bucket.scope(BUCKET)
+    const collection = scope.collection(BUCKET)
+
+    const results = await collection.get(BUCKET)
+
+    return {
+      statusCode: 200,
+      body: results.value,
+    }
+  } catch (error) {
+    return { statusCode: 500, body: error.toString() }
+  }
+}
+
+module.exports = { handler }
+~~~
+
+At the top of this serverless function, the database credentials are loaded from the environment variables. A connection to the database is then established. When this serverless function is called, it will get the value of the todos document from the database and return it to the caller. The key part of the function is this line:
+
+~~~
+const results = await collection.get(BUCKET)
+~~~
+
+Note: we're using the value of the BUCKET environment variable for the Bucket, Scope, Collection, and document ID in this case. That's because our simple app only needs to store a single document. In a real application these would likely all be different. For more information see: https://docs.couchbase.com/cloud/clusters/data-service/about-buckets-scopes-collections.html
+
+
+^^^^^^^^
 
 - In GitHub, click Add File, name it netlify/functions/saveTodos/saveTodos.js, and paste in the following content:
 
@@ -341,52 +399,12 @@ _commit(todos) {
 
 Now that we're able to save todos to the database, we also need to update our first serverless function to read them back from the database.
 
-- Edit netlify/functions/loadTodos/loadTodos.js so that it looks like the following:
 
-~~~
-const couchbase = require('couchbase')
 
-const ENDPOINT = process.env.COUCHBASE_ENDPOINT
-const USERNAME = process.env.COUCHBASE_USERNAME
-const PASSWORD = process.env.COUCHBASE_PASSWORD
-const BUCKET = process.env.COUCHBASE_BUCKET
 
-const couchbaseClientPromise = couchbase.connect('couchbases://' + ENDPOINT, {
-  username: USERNAME,
-  password: PASSWORD,
-  timeouts: {
-    kvTimeout: 10000, // milliseconds
-  },
-})
 
-const handler = async (event) => {
-  // only allow GET requests
-  if (event.httpMethod !== 'GET') {
-    return {
-      statusCode: 405,
-    }
-  }
 
-  try {
 
-    const cluster = await couchbaseClientPromise
-    const bucket = cluster.bucket(BUCKET)
-    const scope = bucket.scope(BUCKET)
-    const collection = scope.collection(BUCKET)
-
-    const results = await collection.get(BUCKET)
-
-    return {
-      statusCode: 200,
-      body: results.value,
-    }
-  } catch (error) {
-    return { statusCode: 500, body: error.toString() }
-  }
-}
-
-module.exports = { handler }
-~~~
 
 - Click Commit changes
 - View the updated web app at: https://*random-project-name*.netlify.app
