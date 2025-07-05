@@ -71,16 +71,16 @@ Note: feel free to follow along with that MVC tutorial (referenced above) and bu
 
 - View the updated web app at: https://*username*.github.io
 
-Keep in mind that it may take a few seconds for committed changes to be deployed to the live site. Also, when updating JavaScript, you may need to force reload the page to see the latest changes.
+Keep in mind that it will take a few seconds for committed changes to be deployed to the live site. Also, when updating JavaScript, you may need to force reload the page to see the latest changes.
 
 - Try adding, deleting, and marking Todos complete
 - Reload the page
  
-This client-side web app uses localStorage to remember the changes you've made when you reload the page within the same browser. But to have those changes show up in a different browser and/or on a different device, we'll need to connect to a database.
+This client-side web app uses localStorage to remember the changes you've made when you reload the page within the same browser. But to have those changes show up in a different browser or on a different device, we'll need to connect to a database.
 
 ## Part Two: Netlify
 
-With traditional [LAMP](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) development, our web app would call PHP functions running on a server to access a MySQL database. In many cases the client-side HTML and JavaScript files would be served from the same host that is also running the PHP and MySQL. With serverless functions, we'll replace the PHP with Node.js (one of many choices) that connects to a Couchbase database (again, one of many choices). Netlify takes care of running the functions, so we don't need to maintain a server.
+With traditional [LAMP](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) development, our web app would call PHP functions running on a server to access a MySQL database. In many cases the client-side HTML and JavaScript files would be served from the same host that is also running the PHP and MySQL. With serverless functions, we'll replace the PHP with Node.js (one of many choices) that connects to a Couchbase database (also one of many choices). Netlify takes care of running the functions, so we don't need to maintain a server.
 
 Reference: https://developer.couchbase.com/tutorial-quickstart-netlify/
 
@@ -444,6 +444,8 @@ Now the build should pass and the deploy will say Published.
 This tutorial has shown that it is possible to develop and deploy a full-stack web app using only a web browser. Eventually you will want to do local development on your computer. Here are the basic steps.
 
 - If necessary, install git: https://github.com/git-guides/install-git
+
+Note: this is not a tutorial about Git. Here is a great place to start: https://learngitbranching.js.org/
 
 ## Part Five: Extra Credit
 
