@@ -201,7 +201,6 @@ Notice that it forgot your changes. That's because we're not yet saving them to 
 Reference: https://www.couchbase.com/blog/get-started-couchbase-capella
 
 - Create or sign in to your account on [couchbase.com](https://www.couchbase.com/)
-  - Choose Sign up with GitHub for easier integration
 
 When you first create an account you will be guided through a quick start to set up a cluster. Your experience may vary but you can always make changes later in cluster settings. Here are the important steps:
   
