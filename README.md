@@ -449,7 +449,7 @@ Whatever changes we've made should be preserved. But more importantly, if we ope
 
 Note: the app is now totally dependent on the database and not really using localStorate. In a real application, we should rely on localStorage first and only connect to the database when necessary to synchronize data.
 
-## Part Four: Local Development
+## Part Four: Local Development 🚧
 
 This tutorial has shown that it is possible to develop and deploy a full-stack web app using only a web browser. Eventually you will want to do local development on your computer. Here are the basic steps.
 
@@ -457,7 +457,7 @@ This tutorial has shown that it is possible to develop and deploy a full-stack w
 
 Note: this is not a tutorial about Git. Here is a great place to start: https://learngitbranching.js.org/
 
-## Part Five: Extra Credit
+## Part Five: Extra Credit 🚧
 
 - GitLab, Bitbucket
 - deploy from github to Vercel
