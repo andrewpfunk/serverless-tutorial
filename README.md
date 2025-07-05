@@ -338,6 +338,17 @@ _commit(todos) {
 }
 ~~~
 
+Now that we're able to save todos to the database, we also need to update our first serverless function to read them back from the database.
+
+- Edit netlify/functions/loadTodos/loadTodos.js so that it looks like the following:
+
+
+
+~~~
+
+~~~
+
+
 - Click Commit changes
 - View the updated web app at: https://*random-project-name*.netlify.app
 
@@ -364,7 +375,7 @@ npm install couchbase
 
 3. After adding the 'couchbase' module, commit the changes to the repository and trigger a new build to ensure the function can find the required dependency.
 
-We'll learn how to run `npm install` in Part Four. For now let's just create that package.json file in GitHub.
+We'll go over running `npm install` in Part Four. For now let's just create that package.json file in GitHub.
 
 - In the GitHub repo, add a file named package.json and paste the following content:
 
@@ -375,6 +386,18 @@ We'll learn how to run `npm install` in Part Four. For now let's just create tha
   }
 }
 ~~~
+
+- Click Commit changes
+
+Now the build should pass and the deploy will say Published.
+
+
+
+
+
+- View the updated web app at: https://*random-project-name*.netlify.app
+
+- 
 
 
 
