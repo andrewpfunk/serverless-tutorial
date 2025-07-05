@@ -309,6 +309,54 @@ const results = await collection.get(BUCKET)
 
 Note: we're using the value of the BUCKET environment variable for the Bucket, Scope, Collection, and document ID in this case. That's because our simple app only needs to store a single document. In a real application these would likely all be different. For more information see: https://docs.couchbase.com/cloud/clusters/data-service/about-buckets-scopes-collections.html
 
+- Click Commit changes
+- View the updated web app at: https://*random-project-name*.netlify.app
+
+That last commit should have kicked off a new build, but the behavior hasn't changed. That's because we intentionally skipped a step which led to a build failure. This is a good opportunity to learn what to do when that happens.
+
+- In Netlify, click on *random-project-name*
+- Scroll down and click on the most recent Production deploy, which Failed
+- Click on Why did it fail?
+
+The AI gave me the correct analysis:
+
+**Diagnosis**
+
+The build failed due to a dependency installation error related to a Netlify Function. The error message indicates that the function loadTodos requires the 'couchbase' module, but it cannot be found.
+
+**Solution**
+
+1. Verify that the 'couchbase' module is included in the site's top-level package.json file.
+2. If the 'couchbase' module is missing, add it to the dependencies in the package.json file using npm:
+
+~~~
+npm install couchbase
+~~~
+
+3. After adding the 'couchbase' module, commit the changes to the repository and trigger a new build to ensure the function can find the required dependency.
+
+We'll run `npm install` in Part Four. For now let's just create that package.json file in GitHub.
+
+- In the GitHub repo, add a file named package.json and paste the following content:
+
+~~~
+{
+  "dependencies": {
+    "couchbase": "^4.4.6"
+  }
+}
+~~~
+
+- Click Commit changes
+
+Now the build should pass and the deploy will say Published.
+
+
+
+
+
+
+
 
 ^^^^^^^^
 
@@ -406,47 +454,7 @@ Now that we're able to save todos to the database, we also need to update our fi
 
 
 
-- Click Commit changes
-- View the updated web app at: https://*random-project-name*.netlify.app
 
-That last commit should have kicked off a new build, but the behavior hasn't changed. That's because we intentionally skipped a step which led to a build failure. This is a good opportunity to learn what to do when that happens.
-
-- In Netlify, click on *random-project-name*
-- Scroll down and click on the most recent Production deploy, which Failed
-- Click on Why did it fail?
-
-The AI gave me the correct analysis:
-
-**Diagnosis**
-
-The build failed due to a dependency installation error related to a Netlify Function. The error message indicates that the function saveTodos requires the 'couchbase' module, but it cannot be found.
-
-**Solution**
-
-1. Verify that the 'couchbase' module is included in the site's top-level package.json file.
-2. If the 'couchbase' module is missing, add it to the dependencies in the package.json file using npm:
-
-~~~
-npm install couchbase
-~~~
-
-3. After adding the 'couchbase' module, commit the changes to the repository and trigger a new build to ensure the function can find the required dependency.
-
-We'll go over running `npm install` in Part Four. For now let's just create that package.json file in GitHub.
-
-- In the GitHub repo, add a file named package.json and paste the following content:
-
-~~~
-{
-  "dependencies": {
-    "couchbase": "^4.4.6"
-  }
-}
-~~~
-
-- Click Commit changes
-
-Now the build should pass and the deploy will say Published.
 
 
 
