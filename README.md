@@ -301,7 +301,7 @@ const handler = async (event) => {
 module.exports = { handler }
 ~~~
 
-At the top of this serverless function, the database credentials are loaded from the environment variables. A connection to the database is then established. When this serverless function is called, it will get the value of the todos document from the database and return it to the caller. The key part of the function is this line:
+At the top of this serverless function, the database credentials are loaded from the environment variables. A connection to the database is then established. When this serverless function is called, it will get the value of the todos document (JSON object) from the database and return it to the caller. The key part of the function is this line:
 
 ~~~
 const results = await collection.get(BUCKET)
@@ -320,6 +320,8 @@ That last commit should have kicked off a new build, but the behavior hasn't cha
 
 The AI gave me the correct analysis:
 
+---
+
 **Diagnosis**
 
 The build failed due to a dependency installation error related to a Netlify Function. The error message indicates that the function loadTodos requires the 'couchbase' module, but it cannot be found.
@@ -335,14 +337,16 @@ npm install couchbase
 
 3. After adding the 'couchbase' module, commit the changes to the repository and trigger a new build to ensure the function can find the required dependency.
 
-We'll run `npm install` in Part Four. For now let's just create that package.json file in GitHub.
+---
+
+We'll run `npm install` in Part Four. For now let's just create that package.json file manually in GitHub.
 
 - In the GitHub repo, add a file named package.json and paste the following content:
 
 ~~~
 {
   "dependencies": {
-    "couchbase": "^4.4.6"
+    "couchbase": "^4.5.0"
   }
 }
 ~~~
@@ -351,14 +355,7 @@ We'll run `npm install` in Part Four. For now let's just create that package.jso
 
 Now the build should pass and the deploy will say Published.
 
-
-
-
-
-
-
-
-^^^^^^^^
+To complete the functionality of our app, we need to add another serverless function that saves our Todo list to the database.
 
 - In GitHub, click Add File, name it netlify/functions/saveTodos/saveTodos.js, and paste in the following content:
 
@@ -406,9 +403,7 @@ const handler = async (event) => {
 module.exports = { handler }
 ~~~
 
-- Click Commit changes
-  
-At the top of this serverless function, the database credentials are loaded from the environment variables. A connection to the database is then established. When this serverless function is called, it will update the database with the body of the message. The key part of the function is this line:
+Most of this function is identical to the contents of loadTodos.js. But instead of loading todos from the database, when this function is called it will update the database with the current value of todos. The key part of the function is this line:
 
 ~~~
 const result = await collection.upsert('todos', event.body)
@@ -445,26 +440,14 @@ _commit(todos) {
 }
 ~~~
 
-Now that we're able to save todos to the database, we also need to update our first serverless function to read them back from the database.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Click Commit changes
 - View the updated web app at: https://*random-project-name*.netlify.app
+- Try adding, deleting, and marking Todos complete
+- Reload the page (allow time for communication with the database)
 
-- 
+Whatever changes we've made should be preserved. But more importantly, if we open the app in a different browser, or on a different device, we should see the same Todo list. And any changes made in that other browser or device should be reflected back in the first browser (after a reload). 
 
-
+Note: the app is now totally dependent on the database and not really using localStorate. In a real application, we should rely on localStorage first and only connect to the database when necessary to synchronize data.
 
 ## Part Four: Local Development
 
