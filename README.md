@@ -445,7 +445,7 @@ _commit(todos) {
 
 Whatever changes we've made should be preserved. But more importantly, if we open the app in a different browser, or on a different device, we should see the same Todo list. And any changes made in that other browser or device should be reflected back in the first browser (after a reload). 
 
-Note: the app is now totally dependent on the database and not really using localStorate. In a real application, we should rely on localStorage first and only connect to the database when necessary to synchronize data.
+Note: the app is now totally dependent on the database and not really using localStorage. In a real application, we should rely on localStorage first and only connect to the database when necessary to synchronize data.
 
 ## Part Four: Local Development 🚧
 
