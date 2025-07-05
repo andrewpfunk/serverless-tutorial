@@ -301,7 +301,7 @@ const handler = async (event) => {
 module.exports = { handler }
 ~~~
 
-At the top of this serverless function, the database credentials are loaded from the environment variables. A connection to the database is then established. When this serverless function is called, it will get the value of the todos document (JSON object) from the database and return it to the caller. The key part of the function is this line:
+At the top of this serverless function, we load the database credentials from the environment variables and then establish a connection to the database. When this serverless function is called, it will get the value of the todos document (JSON object) from the database and return it to the caller. The key part of the function is this line:
 
 ~~~
 const results = await collection.get(BUCKET)
