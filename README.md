@@ -311,7 +311,7 @@ Note: we're using the value of the BUCKET environment variable for the Bucket, S
 - Click Commit changes
 - View the updated web app at: https://*random-project-name*.netlify.app
 
-That last commit should have kicked off a new build, but the behavior hasn't changed. That's because we intentionally skipped a step which led to a build failure. This is a good opportunity to learn what to do when that happens.
+That last commit should have kicked off a new build, but the behavior of our app hasn't changed. That's because we intentionally skipped a step which led to a build failure. This is a good opportunity to learn what to do when that happens.
 
 - In Netlify, click on *random-project-name*
 - Scroll down and click on the most recent Production deploy, which Failed
@@ -420,8 +420,7 @@ const localStorageSetHandler = async function(e) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(localStorage.getItem('todos')),
-    });
-    console.log(result);
+    });    
 };
 document.addEventListener("localStorageSet", localStorageSetHandler, false);
 ~~~
