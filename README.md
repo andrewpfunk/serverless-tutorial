@@ -413,7 +413,7 @@ const result = await collection.upsert('todos', event.body)
 
 Next, we need to modify script.js to call the new serverless function.
 
-- Edit script.js and add these lines at the bottom, right below the setTodos() function we added earlier:
+- Edit script.js and add these lines at the bottom, right below the block of code we added earlier:
 
 ~~~
 const localStorageSetHandler = async function(e) {  
