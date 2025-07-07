@@ -417,13 +417,17 @@ Next, we need to modify script.js to call the new serverless function.
 
 ~~~
 const localStorageSetHandler = async function(e) {  
-  const result = await fetch('/.netlify/functions/saveTodos', {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(localStorage.getItem('todos')),
-    });    
+  try {  
+    const result = await fetch('/.netlify/functions/saveTodos', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: localStorage.getItem('todos'),
+      });    
+  } catch (error) {
+    console.error(error.message);
+  }
 };
 document.addEventListener("localStorageSet", localStorageSetHandler, false);
 ~~~
