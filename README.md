@@ -173,17 +173,17 @@ const app = new Controller(new Model(), new View());
 - Edit script.js and replace that line with the following lines:
 
 ~~~
-async function setTodos() {
-  try {
-    const response = await fetch('/.netlify/functions/loadTodos');
-    const json = await response.json();
-    localStorage.setItem('todos', JSON.stringify(json));
-  } catch (error) {
-    console.error(error.message);
+fetch('/.netlify/functions/loadTodos').then(response => {
+  if (response.status === 200) {
+    response.json().then(json => {
+      localStorage.setItem('todos', JSON.stringify(json));
+    });   
   }
+}).catch(error => {
+  console.error(error.message);
+}).finally(() => {
   const app = new Controller(new Model(), new View());
-}
-setTodos();
+});
 ~~~
 
 - Click Commit changes
@@ -192,7 +192,7 @@ Note: this is the minimal amount of code needed to call our serverless function 
 
 - View the updated web app at: https://*random-project-name*.netlify.app
 
-```Note: the web app will no longer work on GitHub because it now uses a serverless function provided by Netlify. If you open the app at https://*username*.github.io and look in the JavaScript console you will see an error like "/.netlify/functions/loadTodos:1  Failed to load resource: the server responded with a status of 404 ()"```
+Note: the web app will continue to work on GitHub the way it did at the end of Part One, but the new functionality that relies on serverless functions will only work on Netlify. If you open the app at https://*username*.github.io and look in the JavaScript console you will see an error like "GET https://*username*.github.io/.netlify/functions/loadTodos 404 (Not Found)"
 
 - Go ahead and check the box next to Create a serverless function. You can also try adding and deleting todos.
 - Reload the page
