@@ -174,10 +174,13 @@ const app = new Controller(new Model(), new View());
 
 ~~~
 async function setTodos() {
-  const response = await fetch('/.netlify/functions/loadTodos');
-  const json = await response.json();
-  localStorage.setItem('todos', JSON.stringify(json));
-
+  try {
+    const response = await fetch('/.netlify/functions/loadTodos');
+    const json = await response.json();
+    localStorage.setItem('todos', JSON.stringify(json));
+  } catch (error) {
+    console.error(error.message);
+  }
   const app = new Controller(new Model(), new View());
 }
 setTodos();
@@ -185,11 +188,11 @@ setTodos();
 
 - Click Commit changes
 
-Note: this is the minimal amount of code needed to call our serverless function and place the result in localStorage before initializing the app. In a real application it would be better to create a new class that connects to the database with error handling and manages data synchronization.
+Note: this is the minimal amount of code needed to call our serverless function and place the result in localStorage before initializing the app. In a real application it would be better to create a new class that manages database connectivity for data synchronization.
 
 - View the updated web app at: https://*random-project-name*.netlify.app
 
-Note: the web app will no longer work on GitHub because it now uses a serverless function provided by Netlify. If you open the app at https://*username*.github.io and look in the JavaScript console you will see an error like "/.netlify/functions/loadTodos:1  Failed to load resource: the server responded with a status of 404 ()"
+```Note: the web app will no longer work on GitHub because it now uses a serverless function provided by Netlify. If you open the app at https://*username*.github.io and look in the JavaScript console you will see an error like "/.netlify/functions/loadTodos:1  Failed to load resource: the server responded with a status of 404 ()"```
 
 - Go ahead and check the box next to Create a serverless function. You can also try adding and deleting todos.
 - Reload the page
