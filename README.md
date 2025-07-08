@@ -460,7 +460,13 @@ This tutorial has shown that it is possible to develop and deploy a full-stack w
 
 - If necessary, install git: https://github.com/git-guides/install-git
 
-Note: this is not a tutorial about Git. Here is a great place to start: https://learngitbranching.js.org/
+Note: this tutorial will not go into branching or other details about using Git. Here is a good tutorial: https://learngitbranching.js.org/
+
+- In your repository on github.com, Click on Code, select the HTTPS tab, and copy the URL to clipboard
+- In a Terminal window, cd to an empty directory and run 'git clone URL', e.g.:
+- git clone https://github.com/*username*/*username*.github.io.git
+
+
 
 ## Part Five: Extra Credit 🚧
 
