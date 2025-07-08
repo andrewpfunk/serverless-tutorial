@@ -463,8 +463,27 @@ This tutorial has shown that it is possible to develop and deploy a full-stack w
 Note: this tutorial will not go into branching or other details about using Git. Here is a good tutorial: https://learngitbranching.js.org/
 
 - In your repository on github.com, Click on Code, select the HTTPS tab, and copy the URL to clipboard
-- In a Terminal window, cd to an empty directory and run 'git clone URL', e.g.:
+- In a Terminal window on your computer, cd to an empty directory and run 'git clone URL', e.g.:
 - git clone https://github.com/*username*/*username*.github.io.git
+- cd *username*.github.io
+
+In this directory you should see the files you created on github.com. 
+
+- If necessary, install Node.js and npm: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+- Use npm to install Netlify CLI: https://docs.netlify.com/cli/get-started/
+- In the *username*.github.io directory, run: netlify dev
+
+If the required dependencies have all been installed correctly, the web app should open a new browser tab with the app running at http://localhost:8888/. If it doesn't work, look for error messages shown in the Terminal window and try to follow the instructions to fix the problems.
+
+- Try adding, deleting, and marking Todos complete
+
+Remember to allow time for communication to and from the database. The behavior of the web app should be the same on your computer as it was on netlify.app. 
+
+TODO Check database config
+
+---
+
+Next steps...
 
 
 
