@@ -504,9 +504,9 @@ In this directory you should see the files you created on github.com.
 - If necessary, install Node.js and npm: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
 - Use npm to install Netlify CLI: https://docs.netlify.com/cli/get-started/
 - In the *username*.github.io directory, create a file named .env with the environment variables you set above
-- In the Terminal window run: ```netlify dev```
+- In a Terminal window run: ```netlify dev```
 
-If the required dependencies have all been installed correctly, the web app should open a new browser tab with the app running at http://localhost:8888/. If it doesn't work, look for error messages shown in the Terminal window and try to follow the instructions to fix any problems.
+If the required dependencies have all been installed correctly, the web app should open in a new browser tab at http://localhost:8888/. If it doesn't work, look for error messages shown in the Terminal window and try to follow the instructions to fix any problems.
 
 - Try adding, deleting, and marking Todos complete
 
