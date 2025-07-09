@@ -164,12 +164,12 @@ module.exports = { handler }
 
 The tutorial referenced above explains why the serverless function is structured this way. We'll fill in the parts about connecting to the database in Part Three. For now let's update script.js and make sure the client-side script is able to call the serverless function and get the expected result.
 
-- Edit script.js and near the top, change the Model constructor from this:
+- Edit script.js and near the top, change the beggining of the Model class definition from this:
 
 ~~~
 class Model {
   constructor() {
-     this.todos = JSON.parse(localStorage.getItem('todos')) || []
+    this.todos = JSON.parse(localStorage.getItem('todos')) || []
   }
 ~~~
 
@@ -180,17 +180,13 @@ class Model {
   constructor() {
     this.loadTodos();
   }
+
+  loadTodos() {
+    this.todos = JSON.parse(localStorage.getItem('todos')) || []  
+  }
 ~~~
 
 We needed to pull that call to localStorage.getItem('todos') outside of the Model constructor so that we can call it again after the model has been created.
-
-- Right below the constructor, add a new function:
-
-~~~
-loadTodos() {
-  this.todos = JSON.parse(localStorage.getItem('todos')) || []
-}
-~~~
 
 Next we'll create a reloadTodos() function that calls this function. Scroll down to the bottom of the file and find the definition of the handleToggleTodo function.
 
@@ -224,7 +220,7 @@ fetch('/.netlify/functions/loadTodos').then(response => {
 
 - Click Commit changes
 
-Note: this is the minimal amount of code needed to call our serverless function and place the result in localStorage before initializing the app. In a real application it would be better to create a new class that manages database connectivity for data synchronization.
+Note: this is the minimal amount of code needed to call our serverless function, place the result in localStorage, and then reload the todos into the app. In a real application it would be better to create a new class that manages database connectivity for data synchronization.
 
 - View the updated web app at: https://*random-project-name*.netlify.app
 
