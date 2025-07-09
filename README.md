@@ -522,7 +522,16 @@ If we hadn't manually created package.json in GitHub, let's see how we could cre
 
 - `cd USERNAME.github.io`
 - `rm package.json`
+- `npm init`
+
+Answer the interactive prompts and type yes to generate a new package.json file.
+
 - `npm install couchbase`
+
+The package.json file should now include a "dependencies" node with minimum couchbase version, similar to the one we created manually.
+
+Every time we open or reload our app, it loads the Todo list from the database. But if a change is made to the list on another device, we won't know until we reload the app. Let's make some more changes to the app so that it periodically checks the database on its own. We'll make some changes locally and some on GitHub.com, to demonstrate how to sync changes between the two.
+
 
 Next steps...
 - anything else missing from dependencies / setup instructions?
