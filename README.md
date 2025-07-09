@@ -437,7 +437,7 @@ const handler = async (event) => {
 module.exports = { handler }
 ~~~
 
-Most of this function is identical to the contents of loadTodos.js. But instead of loading todos from the database, when this function is called it will update the database with the current value of todos. The key part of the function is this line:
+This function is similar to the contents of loadTodos.js. But instead of loading todos from the database, when this function is called it will update the database with the current value of todos. The key part of the function is this line:
 
 ~~~
 const result = await collection.upsert('todos', event.body)
