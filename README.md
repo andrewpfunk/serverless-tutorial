@@ -483,6 +483,9 @@ Remember to allow time for communication to and from the database. The behavior 
 ---
 
 Next steps...
+- delete package.json and run npm install to recreate it
+- anything else missing from dependencies / setup instructions?
+- add an update function with setInterval
 
 
 
