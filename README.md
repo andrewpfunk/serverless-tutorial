@@ -182,7 +182,7 @@ class Model {
   }
 ~~~
 
-We needed to pull that call to localStorage outside of the Model constructor so we can call it again after the model has been instantiated.
+We needed to pull that call to localStorage.getItem('todos') outside of the Model constructor so that we can call it again after the model has been created.
 
 - Right below the constructor, add a new function:
 
@@ -496,12 +496,12 @@ This tutorial has shown that it is possible to develop and deploy a full-stack w
 
 - If necessary, install git: https://github.com/git-guides/install-git
 
-Note: this tutorial will not go into branching or other details about using Git. Here is a good tutorial: https://learngitbranching.js.org/
+Note: this tutorial will only cover the basics of using Git and will not go into branching or other details. Here is a good tutorial: https://learngitbranching.js.org/
 
 - In your repository on github.com, Click on Code, select the HTTPS tab, and copy the URL to clipboard
-- In a Terminal window on your computer, cd to an empty directory and run 'git clone URL', e.g.:
-- git clone https://github.com/*username*/*username*.github.io.git
-- cd *username*.github.io
+- In a Terminal window on your computer, cd to an empty directory, type 'git clone ', paste the URL, and hit return, e.g.:
+  - `git clone https://github.com/USERNAME/USERNAME.github.io.git`
+- `cd USERNAME.github.io`
 
 In this directory you should see the files you created on github.com. 
 
@@ -510,7 +510,7 @@ In this directory you should see the files you created on github.com.
 - In the *username*.github.io directory, create a file named .env with the environment variables you set above
 - In the Terminal window run: ```netlify dev```
 
-If the required dependencies have all been installed correctly, the web app should open a new browser tab with the app running at http://localhost:8888/. If it doesn't work, look for error messages shown in the Terminal window and try to follow the instructions to fix the problems.
+If the required dependencies have all been installed correctly, the web app should open a new browser tab with the app running at http://localhost:8888/. If it doesn't work, look for error messages shown in the Terminal window and try to follow the instructions to fix any problems.
 
 - Try adding, deleting, and marking Todos complete
 
