@@ -518,8 +518,13 @@ Remember to allow time for communication to and from the database. The behavior 
 
 ---
 
+If we hadn't manually created package.json in GitHub, let's see how we could create it by running `npm install`. Run these commands in a Terminal:
+
+- `cd USERNAME.github.io`
+- `rm package.json`
+- `npm install couchbase`
+
 Next steps...
-- delete package.json and run npm install to recreate it
 - anything else missing from dependencies / setup instructions?
 - add an update function with setInterval
 - demonstrate git fetch, add, commit, push, ...
