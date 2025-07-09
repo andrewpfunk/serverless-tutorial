@@ -91,7 +91,7 @@ First we'll deploy our web app from GitHub to Netlify and make sure it still wor
   - Select the Free tier
 - Click Add new project > Import an existing project
 - Click GitHub
-- Select the *username*.github.io repo
+- Select the repo named: *username*.github.io
 - Leave all the default settings and click Deploy *username*.github.io
 - Click the link to open https://*random-project-name*.netlify.app
 
@@ -164,25 +164,61 @@ module.exports = { handler }
 
 The tutorial referenced above explains why the serverless function is structured this way. We'll fill in the parts about connecting to the database in Part Three. For now let's update script.js and make sure the client-side script is able to call the serverless function and get the expected result.
 
-At the bottom of script.js is the following line, which initializes the web app:
+- Edit script.js and near the top, change the Model constructor from this:
+
+~~~
+class Model {
+  constructor() {
+     this.todos = JSON.parse(localStorage.getItem('todos')) || []
+  }
+~~~
+
+- To this:
+
+~~~
+class Model {
+  constructor() {
+    this.loadTodos();
+  }
+~~~
+
+We needed to pull that call to localStorage outside of the Model constructor so we can call it again after the model has been instantiated.
+
+- Right below the constructor, add a new function:
+
+~~~
+loadTodos() {
+  this.todos = JSON.parse(localStorage.getItem('todos')) || []
+}
+~~~
+
+Next we'll create a reloadTodos() function that calls this function. Scroll down to the bottom of the file and find the definition of the handleToggleTodo function.
+
+- Right after that definition add a new function:
+
+~~~
+reloadTodos = () => {
+  this.model.loadTodos();
+  this.view.displayTodos(this.model.todos);
+}
+~~~
+
+Finally, at the bottom of script.js is the following line, which initializes the web app:
 
 ~~~
 const app = new Controller(new Model(), new View());
 ~~~
 
-- Edit script.js and replace that line with the following lines:
+- Add the following block of code right after that line:
 
 ~~~
 fetch('/.netlify/functions/loadTodos').then(response => {
   if (response.status === 200) {
     response.json().then(json => {
       localStorage.setItem('todos', JSON.stringify(json));
+      app.reloadTodos();      
     });   
   }
-}).catch(error => {
-  console.error(error.message);
-}).finally(() => {
-  const app = new Controller(new Model(), new View());
 });
 ~~~
 
