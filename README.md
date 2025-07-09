@@ -522,6 +522,7 @@ Next steps...
 - delete package.json and run npm install to recreate it
 - anything else missing from dependencies / setup instructions?
 - add an update function with setInterval
+- demonstrate git fetch, add, commit, push, ...
 
 
 
