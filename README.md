@@ -492,7 +492,7 @@ Note: the app is now totally dependent on the database and not really using loca
 
 ## Part Four: Local Development 🚧
 
-This tutorial has shown that it is possible to develop and deploy a full-stack web app using only a web browser. Eventually you will want to do local development on your computer. Here are the basic steps.
+This tutorial has shown that it is possible to develop and deploy a full-stack web app using only a web browser. Eventually you will want to do local development on your computer. Here are the basic steps. Note: some of these commands may differ between Linux, Mac, and Windows. 
 
 - If necessary, install git: https://github.com/git-guides/install-git
 
@@ -518,20 +518,30 @@ Remember to allow time for communication to and from the database. The behavior 
 
 ---
 
-If we hadn't manually created package.json in GitHub, let's see how we could create it by running `npm install`. Run these commands in a Terminal:
+If we hadn't manually created package.json in GitHub, let's see how we could create it by running `npm install`. Run these commands in a Terminal window:
 
 - `cd USERNAME.github.io`
 - `rm package.json`
 - `npm init`
 
-Answer the interactive prompts and type yes to generate a new package.json file.
+Follow the interactive prompts and answer 'yes' to generate a new package.json file.
 
 - `npm install couchbase`
 
 The package.json file should now include a "dependencies" node with minimum couchbase version, similar to the one we created manually.
 
-Every time we open or reload our app, it loads the Todo list from the database. But if a change is made to the list on another device, we won't know until we reload the app. Let's make some more changes to the app so that it periodically checks the database on its own. We'll make some changes locally and some on GitHub.com, to demonstrate how to sync changes between the two.
+---
 
+Every time we open or reload our app, it loads the Todo list from the database. But if a change is made to the list on another device, we won't know until we reload the app. Let's make some more changes to the app so that it periodically checks the database on its own. We'll make the changes and test them locally at first, then sync them to GitHub and deploy them to Netlify.
+
+Let's start by opening script.js in a local text editor.
+
+Note: this tutorial will assume we're using VS Code, which will provide a similar experience to github.dev. Feel free to use your favorite text editor instead.
+
+- `cd USERNAME.github.io`
+- `code script.js`
+
+---
 
 Next steps...
 - anything else missing from dependencies / setup instructions?
