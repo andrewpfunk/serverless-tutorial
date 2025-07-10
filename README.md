@@ -600,7 +600,7 @@ Next steps...
 
 
 
-## Part Five: Extra Credit 🚧
+## Part Five: Alternatives 🚧
 
 - GitLab, Bitbucket
 - deploy from github to Vercel
