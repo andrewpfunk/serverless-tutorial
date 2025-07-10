@@ -549,7 +549,7 @@ Changes to be committed:
 
 - `git commit`
 
-This will open a text editor and prompt you to enter a commit message, something like "Regenerated package.json using npm install"
+This will open a text editor and prompt you to enter a commit message, e.g. "Regenerated package.json using npm install"
 
 - Save the file and exit the text editor
 - `git status`
@@ -574,7 +574,7 @@ Now the version of package.json on github.com should match the one in your local
 
 The local version of package.json should again match the one on github.com.
 
-Note: you can also manage these operations from within VS Code or another IDE.
+Note: you can also manage these operations using the Source Control panel within VS Code or another IDE.
 
 ---
 
