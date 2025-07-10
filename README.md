@@ -561,11 +561,19 @@ Your branch is ahead of 'origin/main' by 1 commit.
 
 - `git push`
 
-Now the version of package.json on github.com should match the one in your local repository. To sync in the other direction we use 'git pull'.
+Now the version of package.json on github.com should match the one in your local repository. To sync in the other direction we use 'git fetch' and 'git pull'.
 
 - On github.com, edit package.json to have a different description, e.g. "MVC Todos App"
 - Click Commit changes
-- In a Terminal window run `git pull`
+- In a Terminal window run `git fetch`
+- `git status`
+
+~~~
+Your branch is behind 'origin/main' by 1 commit, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+~~~
+
+- `git pull`
 
 ~~~
  package.json | 2 +-
@@ -578,25 +586,14 @@ Note: you can also manage these operations using the Source Control panel within
 
 ---
 
-Every time we open or reload our app, it loads the Todo list from the database. But if a change is made to the list on another device, we won't know until we reload the app. Let's make some more changes to the app so that it periodically checks the database on its own. We'll make the changes and test them locally at first, then sync them to GitHub and deploy them to Netlify.
+Every time we open or reload our app, it loads the Todo list from the database. But if a change is made to the list on another device, we won't know until we reload the app. Let's make some more changes to the app so that it periodically checks the database on its own. We'll make the changes and test them locally first, then sync them to GitHub and deploy them to Netlify.
 
-Let's start by opening script.js in a local text editor.
-
-Note: this tutorial will assume we're using VS Code, which will provide a similar experience to github.dev. Feel free to use your favorite text editor instead.
-
-- `cd USERNAME.github.io`
-- `code script.js`
+- Open script.js in VS Code or your favorite text editor
 
 
 
 
 
----
-
-Next steps...
-- anything else missing from dependencies / setup instructions?
-- add an update function with setInterval
-- demonstrate git fetch, add, commit, push, ...
 
 
 
