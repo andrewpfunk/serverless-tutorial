@@ -494,9 +494,10 @@ This tutorial has shown that it is possible to develop and deploy a full-stack w
 
 Note: this tutorial will only cover the basics of using Git and will not go into branching or other details. Here is a good tutorial: https://learngitbranching.js.org/
 
-- In your repository on github.com, Click on Code, select the HTTPS tab, and copy the URL to clipboard
+- Follow these instructions to generate an SSH key and add it to your GitHub account: https://docs.github.com/en/authentication/connecting-to-github-with-ssh
+- In your repository on github.com, Click on Code, select the SSH tab, and copy the URL to clipboard
 - In a Terminal window on your computer, cd to an empty directory, type 'git clone ', paste the URL, and hit return, e.g.:
-  - `git clone https://github.com/USERNAME/USERNAME.github.io.git`
+  - ` git clone git@github.com:andrewpfunk/andrewpfunk.github.io.git`
 - `cd USERNAME.github.io`
 
 In this directory you should see the files you created on github.com. 
@@ -526,6 +527,55 @@ Follow the interactive prompts and answer 'yes' to generate a new package.json f
 
 The package.json file should now include a "dependencies" node with minimum couchbase version, similar to the one we created manually.
 
+Now the version of package.json in our local repo is different from the one on github.com. Let's push the local version to GitHub so they'll be in sync.
+
+- `git status`
+
+~~~
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   package.json
+~~~
+
+- `git add package.json`
+- `git status`
+
+~~~
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   package.json
+~~~
+
+- `git commit`
+
+This will open a text editor and prompt you to enter a commit message, something like "Regenerated package.json using npm install"
+
+- Save the file and exit the text editor
+- `git status`
+
+~~~
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+~~~
+
+- `git push`
+
+Now the version of package.json on github.com should match the one in your local repository. To sync in the other direction we use 'git pull'.
+
+- On github.com, edit package.json to have a different description, e.g. "MVC Todos App"
+- Click Commit changes
+- In a Terminal window run `git pull`
+
+~~~
+ package.json | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+~~~
+
+The local version of package.json should again match the one on github.com.
+
+Note: you can also manage these operations from within VS Code or another IDE.
+
 ---
 
 Every time we open or reload our app, it loads the Todo list from the database. But if a change is made to the list on another device, we won't know until we reload the app. Let's make some more changes to the app so that it periodically checks the database on its own. We'll make the changes and test them locally at first, then sync them to GitHub and deploy them to Netlify.
@@ -536,6 +586,10 @@ Note: this tutorial will assume we're using VS Code, which will provide a simila
 
 - `cd USERNAME.github.io`
 - `code script.js`
+
+
+
+
 
 ---
 
