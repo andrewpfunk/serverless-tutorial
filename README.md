@@ -486,7 +486,7 @@ Whatever changes we've made should be preserved. But more importantly, if we ope
 
 Note: the app is now totally dependent on the database and not really using localStorage. In a real application, we should rely on localStorage first and only connect to the database when necessary to synchronize data.
 
-## Part Four: Local Development 🚧
+## Part Four: Local Development 
 
 This tutorial has shown that it is possible to develop and deploy a full-stack web app using only a web browser. Eventually you will want to do local development on your computer. Here are the basic steps. Note: some of these commands may differ between Linux, Mac, and Windows. 
 
@@ -496,8 +496,8 @@ Note: this tutorial will only cover the basics of using Git and will not go into
 
 - Follow these instructions to generate an SSH key and add it to your GitHub account: https://docs.github.com/en/authentication/connecting-to-github-with-ssh
 - In your repository on github.com, Click on Code, select the SSH tab, and copy the URL to clipboard
-- In a Terminal window on your computer, cd to an empty directory, type 'git clone ', paste the URL, and hit return, e.g.:
-  - ` git clone git@github.com:andrewpfunk/andrewpfunk.github.io.git`
+- In a Terminal window on your computer, cd to an empty directory, type 'git clone ', paste the URL, and press return, e.g.:
+  - ` git clone git@github.com:USERNAME/USERNAME.github.io.git`
 - `cd USERNAME.github.io`
 
 In this directory you should see the files you created on github.com. 
@@ -583,25 +583,4 @@ Your branch is behind 'origin/main' by 1 commit, and can be fast-forwarded.
 The local version of package.json should again match the one on github.com.
 
 Note: you can also manage these operations using the Source Control panel within VS Code or another IDE.
-
----
-
-Every time we open or reload our app, it loads the Todo list from the database. But if a change is made to the list on another device, we won't know until we reload the app. Let's make some more changes to the app so that it periodically checks the database on its own. We'll make the changes and test them locally first, then sync them to GitHub and deploy them to Netlify.
-
-- Open script.js in VS Code or your favorite text editor
-
-
-
-
-
-
-
-
-## Part Five: Alternatives 🚧
-
-- GitLab, Bitbucket
-- deploy from github to Vercel
-- Data access layer and MongoDB, even MySQL
-- https://docs.netlify.com/domains/configure-domains/bring-a-domain-to-netlify/
-
 
